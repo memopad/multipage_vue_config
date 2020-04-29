@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV;
 const argv = require('minimist')(process.argv.slice(2));
 let pre = argv.pre ? true : false;
 let outputDir = path.resolve(customOutputDirPath, './release');
-if(pre){
+if (pre) {
   outputDir = path.resolve(customOutputDirPath, './pre');
 }
 module.exports = {

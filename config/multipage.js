@@ -1,43 +1,43 @@
 const path = require('path');
 const fs = require('fs');
 
-const URL = process.env.INIT_CWD;// 当前目录
+const URL = process.env.INIT_CWD;// 当前路径
 
 const NODE_ENV = process.env.NODE_ENV;  // process环境变量
 
-if (NODE_ENV === 'production' && URL === undefined) throw new Error('当前打包命令缺少url参数！')
+if (NODE_ENV === 'production' && URL === undefined) throw new Error('打包路径出现问题')
 
 const config = {
-    entry: 'main.js',
-    html: 'index.html',
-    pagesRoot: path.resolve(__dirname, '../trunk/branch')
+	entry: 'main.js',
+	html: 'index.html',
+	pagesRoot: path.resolve(__dirname, '../trunk/branch')
 };
 
 const getRoutes = () => {
-    const allRoutes = [];
-    const fullname = URL
-    if (fs.existsSync(`${fullname}/${config.html}`)) {
-        allRoutes.push(fullname);
-    }
-    return allRoutes;
+	const allRoutes = [];
+	const fullname = URL
+	if (fs.existsSync(`${fullname}/${config.html}`)) {
+		allRoutes.push(fullname);
+	}
+	return allRoutes;
 };
 
 const getPages = () => {
-    const pages = {};
+	const pages = {};
 
-    getRoutes().forEach(route => {
-        let filename = route.slice(route.lastIndexOf('/') + 1);
-        pages[filename] = {
-            entry: `${route}/${config.entry}`,
-            template: `${route}/${config.html}`,
-            filename: config.html
-        };
-    });
- 
-    return pages;
+	getRoutes().forEach(route => {
+		let filename = route.slice(route.lastIndexOf('/') + 1);
+		pages[filename] = {
+			entry: `${route}/${config.entry}`,
+			template: `${route}/${config.html}`,
+			filename: config.html
+		};
+	});
+
+	return pages;
 };
 
 module.exports = {
-    getRoutes,
-    getPages
+	getRoutes,
+	getPages
 }
