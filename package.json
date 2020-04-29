@@ -1,0 +1,105 @@
+{
+  "name": "vue_multipage",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "pre": "vue-cli-service build --pre",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve --open"
+  },
+  "dependencies": {
+    "@vue/babel-preset-app": "^3.12.1",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "core-js": "^3.6.5",
+    "cross-env": "^5.2.1",
+    "fastclick": "^1.0.6",
+    "fs": "0.0.1-security",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "jsonp": "^0.2.1",
+    "minimist": "^1.2.5",
+    "node-sass": "^4.14.0",
+    "optipng-bin": "^6.0.0",
+    "path": "^0.12.7",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.11",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-router": "^3.1.5",
+    "vue-seamless-scroll": "^1.1.17",
+    "vue-style-loader": "^4.1.2",
+    "vue-touch": "^2.0.0-beta.4",
+    "vue2-countdown": "^1.0.8"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "vue-cli-plugin-postcss-precss": "^1.0.1",
+    "vue-cli-plugin-postcss-preset": "^1.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-preset-env": {
+        "stage": 2
+      },
+      "postcss-assets": {
+        "cachebuster": false,
+        "loadPaths": [
+          "public/"
+        ]
+      },
+      "postcss-import": {},
+      "postcss-extend-rule": {},
+      "postcss-advanced-variables": {},
+      "postcss-plugin-bem-atrule": {
+        "defaultNamespace": "el",
+        "style": "suit",
+        "separators": {
+          "descendent": "__",
+          "modifier": "--"
+        },
+        "shortcuts": {
+          "utility": "util",
+          "component": "b",
+          "modifier": "m",
+          "descendent": "e"
+        }
+      },
+      "postcss-atroot": {},
+      "postcss-property-lookup": {},
+      "postcss-nested": {},
+      "postcss-nested-ancestors": {},
+      "postcss-calc": {},
+      "postcss-sass-color-functions": {},
+      "lost": false,
+      "postcss-utils": {}
+    }
+  },
+  "browserslist": [
+    "> 5%",
+    "last 10 versions"
+  ]
+}
