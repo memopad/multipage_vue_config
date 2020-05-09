@@ -3,19 +3,18 @@ const path = require('path');
 // 新建一个multipage.js文件，用来处理vue加载模板的入口；
 const pages = require('./config/multipage').getPages();
 const getRoutes = require('./config/multipage').getRoutes();
-const customOutputDirPath = getRoutes[0];
-const env = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 const argv = require('minimist')(process.argv.slice(2));
 let pre = argv.pre ? true : false;
-let outputDir = path.resolve(customOutputDirPath, './release');
-if (pre) {
-  outputDir = path.resolve(customOutputDirPath, './pre');
+let outputDir = path.resolve(getRoutes, './release');
+if(pre){
+  outputDir = path.resolve(getRoutes, './pre');
 }
 module.exports = {
   outputDir: outputDir,
   assetsDir: 'static',
   // 官方要求修改路径在这里做更改，默认是根目录下，可以自行配置
-  publicPath: env === 'development' ? '/' : './',
+  publicPath: './',
   lintOnSave: false,
   productionSourceMap: false,
   // 在多核机器下会默认开启。
@@ -42,7 +41,7 @@ module.exports = {
       .plugin('ImageminPlugin')
       .use(ImageminPlugin, [{
         test: /\.(jpe?g|png|gif|svg)$/i,
-        disable: process.env.NODE_ENV !== 'production', // Disable during development
+        disable: NODE_ENV !== 'production', // Disable during development
         pngquant: {
           quality: '80-90'
         }
@@ -55,7 +54,7 @@ module.exports = {
         // 修改它的选项...
         return options
       })
-    if (process.env.NODE_ENV === 'production') {
+    if (NODE_ENV === 'production') {
       config.module.rule('images').use('url-loader').loader('url-loader').tap(options => {
         Object.assign(options, { limit: 10240 })
         return options;
@@ -70,7 +69,7 @@ module.exports = {
   },
 
   configureWebpack: config => {
-    if (process.env.NODE_ENV === 'production') {
+    if (NODE_ENV === 'production') {
       // config.output.path = path.join(__dirname, './dist')
       config.output.filename = 'static/js/[name].[contenthash:8].js'
       config.output.chunkFilename = 'static/js/[name].[contenthash:8].js'
