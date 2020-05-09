@@ -1,6 +1,6 @@
 {
   "name": "vue_multipage",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -30,7 +30,8 @@
     "vue-seamless-scroll": "^1.1.17",
     "vue-style-loader": "^4.1.2",
     "vue-touch": "^2.0.0-beta.4",
-    "vue2-countdown": "^1.0.8"
+    "vue2-countdown": "^1.0.8",
+    "webpack-encoding-plugin": "^0.3.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",

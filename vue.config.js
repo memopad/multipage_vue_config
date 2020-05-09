@@ -1,4 +1,5 @@
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const EncodingPlugin = require('webpack-encoding-plugin');
 const path = require('path');
 // 新建一个multipage.js文件，用来处理vue加载模板的入口；
 const pages = require('./config/multipage').getPages();
@@ -45,6 +46,12 @@ module.exports = {
         pngquant: {
           quality: '80-90'
         }
+      }]);
+    config
+      .plugin('EncodingPlugin')
+      .use(EncodingPlugin,[{
+        test: /\.(js|css|html)$/i,
+        encoding: 'utf-8'
       }]);
     config.module
       .rule('vue')
